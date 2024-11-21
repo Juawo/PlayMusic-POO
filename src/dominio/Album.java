@@ -3,11 +3,22 @@ package dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 public class Album {
     private String nome;
     private int ano;
     private List<Musica> musicas = new ArrayList<>();
-    
+    private ImageIcon capa;
+
+    public ImageIcon getCapa() {
+        return this.capa;
+    }
+
+    public void setCapa(String filePath) {
+        this.capa = new ImageIcon(filePath);
+    }
+
     public String getNome() {
         return nome;
     }
@@ -28,10 +39,11 @@ public class Album {
         return musicas;
     }
 
-    public void addMusica( Musica musica){
-        this.musicas.add(musica);    }
+    public void addMusica(Musica musica) {
+        this.musicas.add(musica);
+    }
 
-    public void addMusicas(List<Musica> musicas){
+    public void addMusicas(List<Musica> musicas) {
         this.musicas.addAll(musicas);
     }
 }
