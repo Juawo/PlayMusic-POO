@@ -1,4 +1,4 @@
-import java.util.Scanner;
+// import java.util.Scanner;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +15,7 @@ import dominio.Musica;
 
 public class App {
     public static void main(String[] args) {
-        Scanner scannerInput = new Scanner(System.in);
+        // Scanner scannerInput = new Scanner(System.in);
 
         List<Artista> artistas = new ArrayList<>();
 
@@ -70,29 +70,34 @@ public class App {
 
         Album album2 = new Album();
         album2.addMusicas(musicas2);
-        album2.setCapa("./assets/assets/Oficina-G3/Depois-Da-Guerra-Capa.webp");
+        album2.setCapa("./assets/assets/Oficina-G3/Depois-Da-Guerra-Capa.png");
 
         Artista oficinaG3 = new Artista();
         oficinaG3.setNome("OficinaG3");
         oficinaG3.addAlbum(album2);
 
         artistas.add(oficinaG3);
-        
+
         AudioPlayer player = new AudioPlayer();
 
+        // Em construção - Escolha de album
         // int escolha = 0;
-        // System.out.print(" -- Albuns --\n 1 - BandaResgate \n 2 - OficinaG3\n Escolha : ");
+        // System.out.print(" -- Albuns --\n 1 - BandaResgate \n 2 - OficinaG3\n Escolha
+        // : ");
         // escolha = scannerInput.nextInt();
 
         // // if (escolha == 1) {
-        // //     player.loadAudio(bandaResgate.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio());
+        // //
+        // player.loadAudio(bandaResgate.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio());
         // // } else if (escolha == 2){
-        // //     player.loadAudio(oficinaG3.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio());
+        // //
+        // player.loadAudio(oficinaG3.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio());
 
         // // }
-        
-        
+
         JButton playStopButton = new JButton("Play");
+        player.loadAudio(oficinaG3.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio());
+
         playStopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
