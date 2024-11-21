@@ -50,14 +50,15 @@ public class App {
         artistas.add(bandaResgate);
 
         AudioPlayer player = new AudioPlayer();
-        player.playAlbum(album1);
+        
+        player.loadAudio(bandaResgate.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio());
         
         JButton playStopButton = new JButton("Play");
         playStopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 if (!player.getIsPlaying()) {
-                    player.playAudio(artistas.get(0).getMusicasFromAlbum(bandaResgate, 0));
+                    player.playAudio();
                     playStopButton.setText("Stop");
                 } else {
                     player.stopAudio();

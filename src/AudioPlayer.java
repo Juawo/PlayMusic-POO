@@ -77,14 +77,11 @@ public class AudioPlayer {
     }
 
     // Tocando o arquivo de música
-    public void playAudio(List<Musica> musicas) {
+    public void playAudio() {
         System.out.println("PlayAudio");
-        System.out.println(iterador);
-        loadAudio(musicas.get(iterador).getArquivoAudio());
         if (audioClip != null && !isPlaying) {
             System.out.println("PlayAudio Start");
             audioClip.start();
-            musicTitleIsPlaying = musicas.get(iterador).getNome();
             this.isPlaying = true;
         }
     }
@@ -104,10 +101,12 @@ public class AudioPlayer {
         stopAudio();
         if (iterador < (musicas.size() - 1)) {
             iterador++;
-            playAudio(musicas);
+            loadAudio(musicas.get(iterador).getArquivoAudio());
+            playAudio();
         } else if (iterador >= (musicas.size() - 1)) {
             iterador = 0;
-            playAudio(musicas);
+            loadAudio(musicas.get(iterador).getArquivoAudio());
+            playAudio();
         }
     }
 
@@ -117,10 +116,12 @@ public class AudioPlayer {
         stopAudio();
         if (iterador > 0 && iterador <= (musicas.size() - 1)) {
             iterador--;
-            playAudio(musicas);
+            loadAudio(musicas.get(iterador).getArquivoAudio());
+            playAudio();
         } else if (iterador == 0) {
             iterador = musicas.size() - 1;
-            playAudio(musicas);
+            loadAudio(musicas.get(iterador).getArquivoAudio());
+            playAudio();
         }
     }
 }
