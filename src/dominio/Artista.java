@@ -16,6 +16,11 @@ public class Artista {
     public List<Album> getAlbuns() {
         return albuns;
     }
+
+    public List<Musica> getMusicasFromAlbum(Artista artista, int numeroAlbum){
+        return artista.getAlbuns().get(numeroAlbum).getMusicas();
+    }
+
     public void addAlbum(Album album) {
         this.albuns.add(album);
     }

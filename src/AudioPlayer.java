@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 
+import java.util.List;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -9,9 +11,17 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import dominio.Musica;
+
 public class AudioPlayer {
     private Clip audioClip;
     private boolean isPlaying = false;
+    private String musicTitleIsPlaying;
+    private int iterador = 0;
+
+    public String getMusicTitleIsPlaying() {
+        return musicTitleIsPlaying;
+    }
 
     public Clip getAudioClip() {
         return this.audioClip;
@@ -67,11 +77,14 @@ public class AudioPlayer {
     }
 
     // Tocando o arquivo de música
-    public void playAudio() {
+    public void playAudio(List<Musica> musicas) {
         System.out.println("PlayAudio");
+        System.out.println(iterador);
+        loadAudio(musicas.get(iterador).getArquivoAudio());
         if (audioClip != null && !isPlaying) {
             System.out.println("PlayAudio Start");
             audioClip.start();
+            musicTitleIsPlaying = musicas.get(iterador).getNome();
             this.isPlaying = true;
         }
     }
@@ -86,12 +99,28 @@ public class AudioPlayer {
     }
 
     // Tocar próxima música
-    public void nextAudio() {
+    public void nextAudio(List<Musica> musicas) {
         System.out.println("Próxima música");
+        stopAudio();
+        if (iterador < (musicas.size() - 1)) {
+            iterador++;
+            playAudio(musicas);
+        } else if (iterador >= (musicas.size() - 1)) {
+            iterador = 0;
+            playAudio(musicas);
+        }
     }
 
     // Tocar música anterior
-    public void previousAudio() {
+    public void previousAudio(List<Musica> musicas) {
         System.out.println("Música anterior");
+        stopAudio();
+        if (iterador > 0 && iterador <= (musicas.size() - 1)) {
+            iterador--;
+            playAudio(musicas);
+        } else if (iterador == 0) {
+            iterador = musicas.size() - 1;
+            playAudio(musicas);
+        }
     }
 }
