@@ -20,7 +20,7 @@ public class App {
         musica1.setNome("Neófito");
         musica1.setGenero("Rock Cristão");
         musica1.setDuracao(194);
-        musica1.setArquivoAudio("./assets/Banda-Resgate-A-terapia.wav");
+        musica1.setArquivoAudio("./assets/Banda-Resgate-Neofito.wav");
 
         Musica musica2 = new Musica();
         musica2.setNome("Terapia");
@@ -50,6 +50,8 @@ public class App {
         artistas.add(bandaResgate);
 
         AudioPlayer player = new AudioPlayer();
+        player.playAlbum(album1);
+        
         JButton playStopButton = new JButton("Play");
         playStopButton.addActionListener(new ActionListener() {
             @Override
