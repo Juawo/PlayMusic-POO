@@ -16,12 +16,8 @@ import dominio.Musica;
 public class AudioPlayer {
     private Clip audioClip;
     private boolean isPlaying = false;
-    private String musicTitleIsPlaying;
+    private List<Musica> listReproduction;
     private int iterador = 0;
-
-    public String getMusicTitleIsPlaying() {
-        return musicTitleIsPlaying;
-    }
 
     public Clip getAudioClip() {
         return this.audioClip;
@@ -76,6 +72,12 @@ public class AudioPlayer {
         }
     }
 
+    public void loadAudios(List<Musica> musicas){
+        this.listReproduction = musicas;
+        this.iterador = 0;
+        loadAudio(musicas.get(iterador).getArquivoAudio());
+    }
+
     // Tocando o arquivo de música
     public void playAudio() {
         System.out.println("PlayAudio");
@@ -96,32 +98,40 @@ public class AudioPlayer {
     }
 
     // Tocar próxima música
-    public void nextAudio(List<Musica> musicas) {
-        System.out.println("Próxima música");
-        stopAudio();
-        if (iterador < (musicas.size() - 1)) {
-            iterador++;
-            loadAudio(musicas.get(iterador).getArquivoAudio());
-            playAudio();
-        } else if (iterador >= (musicas.size() - 1)) {
-            iterador = 0;
-            loadAudio(musicas.get(iterador).getArquivoAudio());
-            playAudio();
+    public void nextAudio() {
+        if (listReproduction != null) {     
+            System.out.println("Próxima música");
+            stopAudio();
+            if (iterador < (listReproduction.size() - 1)) {
+                iterador++;
+                loadAudio(listReproduction.get(iterador).getArquivoAudio());
+                playAudio();
+            } else if (iterador >= (listReproduction.size() - 1)) {
+                iterador = 0;
+                loadAudio(listReproduction.get(iterador).getArquivoAudio());
+                playAudio();
+            }
+        } else {
+            System.out.println("Adicione um Albúm ou Playlist para tocar!");
         }
     }
 
     // Tocar música anterior
-    public void previousAudio(List<Musica> musicas) {
-        System.out.println("Música anterior");
-        stopAudio();
-        if (iterador > 0 && iterador <= (musicas.size() - 1)) {
-            iterador--;
-            loadAudio(musicas.get(iterador).getArquivoAudio());
-            playAudio();
-        } else if (iterador == 0) {
-            iterador = musicas.size() - 1;
-            loadAudio(musicas.get(iterador).getArquivoAudio());
-            playAudio();
+    public void previousAudio() {
+        if (listReproduction != null) {     
+            System.out.println("Música anterior");
+            stopAudio();
+            if (iterador > 0 && iterador <= (listReproduction.size() - 1)) {
+                iterador--;
+                loadAudio(listReproduction.get(iterador).getArquivoAudio());
+                playAudio();
+            } else if (iterador == 0) {
+                iterador = listReproduction.size() - 1;
+                loadAudio(listReproduction.get(iterador).getArquivoAudio());
+                playAudio();
+            }
+        } else{
+            System.out.println("Adicione um Albúm ou Playlist para tocar!");
         }
     }
 }

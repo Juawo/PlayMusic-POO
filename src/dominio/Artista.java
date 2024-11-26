@@ -6,6 +6,10 @@ import java.util.List;
 public class Artista {
     private String nome;
     private List<Album> albuns = new ArrayList<>();
+    
+    public Artista(String nome) {
+        this.nome = nome;
+    }
 
     public String getNome() {
         return nome;

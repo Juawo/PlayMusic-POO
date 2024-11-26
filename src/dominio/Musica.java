@@ -6,6 +6,13 @@ public class Musica {
     private String arquivoAudio;
     private int duracao;
 
+    public Musica(String nome, String genero, String arquivoAudio, int duracao) {
+        this.nome = nome;
+        this.genero = genero;
+        this.arquivoAudio = arquivoAudio;
+        this.duracao = duracao;
+    }
+
     public String getNome() {
         return nome;
     }

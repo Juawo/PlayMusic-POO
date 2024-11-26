@@ -11,6 +11,13 @@ public class Album {
     private List<Musica> musicas = new ArrayList<>();
     private ImageIcon capa;
 
+    public Album(String nome, int ano, List<Musica> musicas, String capa) {
+        this.nome = nome;
+        this.ano = ano;
+        this.musicas = musicas;
+        this.capa = new ImageIcon(capa);
+    }
+
     public ImageIcon getCapa() {
         return this.capa;
     }
