@@ -80,7 +80,6 @@ public class AudioPlayer {
 
     // Tocando o arquivo de música
     public void playAudio() {
-        System.out.println("PlayAudio");
         if (audioClip != null && !isPlaying) {
             System.out.println("PlayAudio Start");
             audioClip.start();
