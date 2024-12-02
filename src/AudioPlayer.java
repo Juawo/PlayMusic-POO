@@ -72,7 +72,7 @@ public class AudioPlayer {
         }
     }
 
-    public void loadAudios(List<Musica> musicas){
+    public void loadAudios(List<Musica> musicas){ //loadListMusic
         this.listReproduction = musicas;
         this.iterador = 0;
         loadAudio(musicas.get(iterador).getArquivoAudio());

@@ -1,5 +1,3 @@
-// import java.util.Scanner;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,11 +30,22 @@ public class App {
         Artista bandaResgate = new Artista("Banda Resgate");
         bandaResgate.addAlbum(album1);
 
+        //bandaResgate.getAlbuns().get(0).getMusicas().get(0).getArquivoAudio();
+        //[album1,album2,album3] -> album1 -> [musica1,musica2,musica3] -> musica1 -> "./assets/"
+        
+        Musica musica4 = new Musica("Empty Machine", "Rock", "assets/Linkin-Park/The-Emptiness-Machine-_Official-Music-Video_-Linkin-Park-_-ezmp3.cc-_.wav", 200);
+
+        Album album2 = new Album("Album-LP", 2024, musicas1, null);
+        album2.addMusica(musica4);
+
+        Artista linkinPar = new  Artista("LinkinPark");
+        linkinPar.addAlbum(album2);
+        
         AudioPlayer player = new AudioPlayer();
 
-        JButton playStopButton = new JButton("Play");
-
         player.loadAudios(bandaResgate.getAlbuns().get(0).getMusicas());
+
+        JButton playStopButton = new JButton("Play");
         
         playStopButton.addActionListener(new ActionListener() {
             @Override
@@ -65,7 +74,7 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent event) {
                 player.previousAudio();
-                playStopButton.setText("Stop");
+                playStopButton.setText("Stop"); 
             }
         });
 

@@ -5,11 +5,17 @@ import java.util.List;
 
 public class Artista {
     private String nome;
-    private List<Album> albuns = new ArrayList<>();
+    final private List<Album> albuns;
     
     public Artista(String nome) {
         this.nome = nome;
+        this.albuns = new ArrayList<>();
     }
+    public Artista(String nome, List<Album> albuns) {
+        this.nome = nome;
+        this.albuns = albuns;
+    }
+
 
     public String getNome() {
         return nome;
@@ -21,10 +27,6 @@ public class Artista {
         return albuns;
     }
 
-    public List<Musica> getMusicasFromAlbum(Artista artista, int numeroAlbum){
-        return artista.getAlbuns().get(numeroAlbum).getMusicas();
-    }
-
     public void addAlbum(Album album) {
         this.albuns.add(album);
     }
@@ -32,6 +34,5 @@ public class Artista {
     public void addAlbuns(List<Album> albuns){
         this.albuns.addAll(albuns);
     }
-
     
 }
