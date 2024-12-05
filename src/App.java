@@ -43,9 +43,9 @@ public class App {
         linkinPar.addAlbum(album2);
         
         AudioPlayer player = new AudioPlayer();
+        player.loadAudios(bandaResgate.getAlbuns().get(0).getMusicas());
         AudioPlayerGUI gui = new AudioPlayerGUI(player);
 
-        player.loadAudios(bandaResgate.getAlbuns().get(0).getMusicas());
 
         gui.createOptionDialog("Você está ouvindo música", "PlayMusic", bandaResgate.getAlbuns().get(0).getCapa());
     }

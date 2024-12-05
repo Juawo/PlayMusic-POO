@@ -11,7 +11,7 @@ public class AudioPlayerGUI {
 
     public AudioPlayerGUI(AudioPlayer player) {
         this.player = player;
-        playStopButton = new JButton("Play");
+        this.playStopButton = new JButton("Play");
     }
 
     public JButton getPlayStopButton(){
@@ -67,7 +67,7 @@ public class AudioPlayerGUI {
     }
 
     public void createOptionDialog(String text, String title, ImageIcon capa){
-        JOptionPane.showOptionDialog(null, text, title, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, capa, new Object[] { createPreviousButtonGUI(), createPlayStopButtonGUI(), createNextButtonGUI()}, createPlayStopButtonGUI());
+        JOptionPane.showOptionDialog(null, text, title, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, capa, new Object[] { createPreviousButtonGUI(), playStopButton, createNextButtonGUI()}, createPlayStopButtonGUI());
 
         if (player.getAudioClip() != null) {
             player.getAudioClip().close();
